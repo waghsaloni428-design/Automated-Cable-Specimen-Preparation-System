@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Cable Specimen Preparation</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Automated Cable Specimen Preparation</h1>
+        <p>Digital Monitoring & Quality Control System</p>
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav>
+        <button onclick="showPage('dashboard')">Dashboard</button>
+        <button onclick="showPage('process')">Process Monitoring</button>
+        <button onclick="showPage('quality')">Quality & Results</button>
+        <button onclick="showPage('report')">Digital Report</button>
+        <button onclick="showPage('safety')">Safety & Faults</button>
+    </nav>
+
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active">
+
+        <h2>Dashboard</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Machine Status</h3>
+                <p class="value">RUNNING</p>
+            </div>
+
+            <div class="card">
+                <h3>Cable Length</h3>
+                <p class="value">2.00 m</p>
+            </div>
+
+            <div class="card">
+                <h3>Specimens</h3>
+                <p class="value">4</p>
+            </div>
+
+            <div class="card">
+                <h3>Accepted</h3>
+                <p class="value">4</p>
+            </div>
+
+            <div class="card">
+                <h3>Rejected</h3>
+                <p class="value">0</p>
+            </div>
+
+        </div>
+
+
+        <!-- MACHINE PROCESS OVERVIEW -->
+        <div class="machine-box">
+
+            <h2>Machine Process Overview</h2>
+
+            <div class="machine-flow">
+
+                <div class="machine-module">
+                    <div class="module-icon">📥</div>
+                    <strong>Cable Loading</strong>
+                    <small>Detection</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="machine-module">
+                    <div class="module-icon">⚙️</div>
+                    <strong>Feeding</strong>
+                    <small>Length Control</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="machine-module">
+                    <div class="module-icon">🔒</div>
+                    <strong>Clamping</strong>
+                    <small>Secure Cable</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="machine-module">
+                    <div class="module-icon">✂️</div>
+                    <strong>Cutting</strong>
+                    <small>Insulation Cut</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="machine-module">
+                    <div class="module-icon">🔧</div>
+                    <strong>Stripping</strong>
+                    <small>Insulation Removal</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="machine-module">
+                    <div class="module-icon">🔍</div>
+                    <strong>Inspection</strong>
+                    <small>Thickness Check</small>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <div class="machine-module">
+                    <div class="module-icon">📦</div>
+                    <strong>Ejection</strong>
+                    <small>Specimen Ready</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+      <!-- MACHINE CONTROLS -->
+<div class="controls-box">
+
+    <h2>Machine Controls</h2>
+
+    <button class="start-btn" onclick="startMachine()">▶ START</button>
+
+    <button class="stop-btn" onclick="stopMachine()">⏹ STOP</button>
+
+    <button class="reset-btn" onclick="resetMachine()">↻ RESET</button>
+
+    <p id="machineMessage">System Ready</p>
+
+</div>  <!-- CURRENT OPERATION -->
+        <div class="operation-box">
+
+            <h2>Current Operation</h2>
+
+            <p>STRIPPING</p>
+
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROCESS MONITORING -->
+    <section id="process" class="page">
+
+        <h2>Process Monitoring</h2>
+
+        <div class="process-list">
+
+            <div class="process-step">
+                <span>1</span>
+                <strong>Cable Detection</strong>
+                <b>✓ Completed</b>
+            </div>
+
+            <div class="process-step">
+                <span>2</span>
+                <strong>Length Measurement</strong>
+                <b>✓ Completed</b>
+            </div>
+
+            <div class="process-step">
+                <span>3</span>
+                <strong>Feeding & Straightening</strong>
+                <b>✓ Completed</b>
+            </div>
+
+            <div class="process-step">
+                <span>4</span>
+                <strong>Positioning</strong>
+                <b>✓ Completed</b>
+            </div>
+
+            <div class="process-step">
+                <span>5</span>
+                <strong>Clamping</strong>
+                <b>✓ Completed</b>
+            </div>
+
+            <div class="process-step">
+                <span>6</span>
+                <strong>Circumferential Cutting</strong>
+                <b>✓ Completed</b>
+            </div>
+
+            <div class="process-step">
+                <span>7</span>
+                <strong>Stripping</strong>
+                <b>● In Progress</b>
+            </div>
+
+            <div class="process-step">
+                <span>8</span>
+                <strong>Thickness Inspection</strong>
+                <b>Pending</b>
+            </div>
+
+            <div class="process-step">
+                <span>9</span>
+                <strong>Specimen Ejection</strong>
+                <b>Pending</b>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUALITY -->
+    <section id="quality" class="page">
+
+        <h2>Quality & Results</h2>
+
+        <table>
+
+            <tr>
+                <th>Specimen</th>
+                <th>Length</th>
+                <th>Thickness</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>2.00 m</td>
+                <td>OK</td>
+                <td>PASS</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>2.00 m</td>
+                <td>OK</td>
+                <td>PASS</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>2.00 m</td>
+                <td>OK</td>
+                <td>PASS</td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>2.00 m</td>
+                <td>OK</td>
+                <td>PASS</td>
+            </tr>
+
+        </table>
+
+        <div class="summary-box">
+
+            <h3>Quality Summary</h3>
+
+            <p>Total Specimens: <strong>4</strong></p>
+            <p>Accepted: <strong>4</strong></p>
+            <p>Rejected: <strong>0</strong></p>
+            <p>Acceptance Rate: <strong>100%</strong></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DIGITAL REPORT -->
+    <section id="report" class="page">
+
+        <h2>Digital Report</h2>
+
+        <div class="report-box">
+
+            <h3>Production Report</h3>
+
+            <p><strong>Batch ID:</strong> CAB-2026-001</p>
+
+            <p><strong>Standard:</strong> IS 10810 / IS 7098</p>
+
+            <p><strong>Cable Length:</strong> 2.00 m</p>
+
+            <p><strong>Total Specimens:</strong> 4</p>
+
+            <p><strong>Accepted:</strong> 4</p>
+
+            <p><strong>Rejected:</strong> 0</p>
+
+            <p><strong>Overall Result:</strong> PASS</p>
+
+            <button onclick="window.print()">Print Report</button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SAFETY -->
+    <section id="safety" class="page">
+
+        <h2>Safety & Faults</h2>
+
+        <div class="safety-list">
+
+            <div>
+                <strong>Emergency Stop</strong>
+                <span>✓ OK</span>
+            </div>
+
+            <div>
+                <strong>Safety Guard</strong>
+                <span>✓ CLOSED</span>
+            </div>
+
+            <div>
+                <strong>Cable Detection</strong>
+                <span>✓ OK</span>
+            </div>
+
+            <div>
+                <strong>Clamp</strong>
+                <span>✓ OK</span>
+            </div>
+
+            <div>
+                <strong>Cutter</strong>
+                <span>✓ OK</span>
+            </div>
+
+        </div>
+
+        <div class="no-fault">
+            <h3>✓ NO ACTIVE FAULTS</h3>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Automated Cable Specimen Preparation | SIH 2026</p>
+        <p>PLC-Based Automation • Quality Inspection • Digital Traceability</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
